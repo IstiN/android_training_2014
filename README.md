@@ -22,6 +22,19 @@ https://mint.splunk.com/
 http://www.sourcetreeapp.com/
 
 
+HW:
+
+Вернуть результат из EditText в стартовую активити
+
+Sample onSaveInstanceState
+
+launchMode="singleTop|singleInstance|singleTask"
+
+http://developer.android.com/intl/ru/training/basics/activity-lifecycle/index.html
+
+Иерархия активитей в приложении
+
+
 Repositories
 ============
 
