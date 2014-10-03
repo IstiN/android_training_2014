@@ -22,3 +22,9 @@ https://mint.splunk.com/
 http://www.sourcetreeapp.com/
 
 
+Repositories
+============
+
+Ломакин Всеволод - https://github.com/lomakin-vsevolod/android_training_2014
+
+
