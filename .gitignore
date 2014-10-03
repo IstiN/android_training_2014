@@ -25,3 +25,4 @@ proguard/
 # Log Files
 *.log
 task_manager/.idea/
+*.iml
