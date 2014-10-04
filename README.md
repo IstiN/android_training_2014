@@ -42,3 +42,7 @@ Repositories
 
 Ирина Монченко - https://github.com/MonchenkoID/Research
 
+Макс Рабцевич - https://github.com/Raxle/First_task
+
+
+
