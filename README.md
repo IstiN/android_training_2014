@@ -48,6 +48,6 @@ Repositories
 
 Dzmitry Slutskiy - https://github.com/DzmitrySlutskiy/training
 
-
+Буйко Григорий     https://github.com/green2005/epam_training
 
 
