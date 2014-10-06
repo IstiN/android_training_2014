@@ -50,5 +50,6 @@ Dzmitry Slutskiy - https://github.com/DzmitrySlutskiy/training
 
 Евгений Мешкин   -   https://github.com/EvgenMeshkin/test
 
+Коляго Артём - https://github.com/stakkato95
 
 
