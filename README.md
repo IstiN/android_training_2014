@@ -46,5 +46,8 @@ Repositories
 
 Павел Добренко - https://github.com/kotmatpockuh/atom_tweet
 
+Dzmitry Slutskiy - https://github.com/DzmitrySlutskiy/training
+
+
 
 
