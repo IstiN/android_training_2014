@@ -52,4 +52,5 @@ Dzmitry Slutskiy - https://github.com/DzmitrySlutskiy/training
 
 Коляго Артём - https://github.com/stakkato95
 
+Саша Бубешко - https://github.com/bybeha/android_training_14
 
