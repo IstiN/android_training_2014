@@ -34,6 +34,12 @@ http://developer.android.com/intl/ru/training/basics/activity-lifecycle/index.ht
 
 Иерархия активитей в приложении
 
+HW:
+
+В activity_login убрать LinearLayout
+Когда фокус в EditText password кнопка на клавиатуре(справа внизу) должна быть "done" при нажатии action как на кнопку login
+
+
 
 Repositories
 ============
