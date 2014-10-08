@@ -38,19 +38,22 @@ http://developer.android.com/intl/ru/training/basics/activity-lifecycle/index.ht
 Repositories
 ============
 
-Ломакин Всеволод - https://github.com/lomakin-vsevolod/android_training_2014
+1. Ломакин Всеволод - https://github.com/lomakin-vsevolod/android_training_2014
 
-Ирина Монченко - https://github.com/MonchenkoID/Research
+2. Ирина Монченко - https://github.com/MonchenkoID/Research
 
-Макс Рабцевич - https://github.com/Raxle/First_task
+3. Макс Рабцевич - https://github.com/Raxle/First_task
 
-Павел Добренко - https://github.com/kotmatpockuh/atom_tweet
+4. Павел Добренко - https://github.com/kotmatpockuh/atom_tweet
 
-Dzmitry Slutskiy - https://github.com/DzmitrySlutskiy/training
+5. Dzmitry Slutskiy - https://github.com/DzmitrySlutskiy/training
 
-Евгений Мешкин   -   https://github.com/EvgenMeshkin/test
+6. Евгений Мешкин   -   https://github.com/EvgenMeshkin/test
 
-Коляго Артём - https://github.com/stakkato95
+7. Коляго Артём - https://github.com/stakkato95
 
-Саша Бубешко - https://github.com/bybeha/android_training_14
+8. Саша Бубешко - https://github.com/bybeha/android_training_14
+
+9. Anatoly Yablonski - https://github.com/Anatoleq/TaskManager
+
 
