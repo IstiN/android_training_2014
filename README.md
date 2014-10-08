@@ -58,3 +58,11 @@ Repositories
 
 10. Елена Станчиц - https://github.com/AlenaStan/Project
 
+11. Полянский Алексей - https://github.com/AlexPolyansky/AndroidTraning
+
+12. Vania Bakach - https://github.com/VLIK1234/TMDB
+
+13. Валерий Каптановский - https://github.com/kptvlr/MyAndroid
+
+
+
