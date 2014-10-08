@@ -38,6 +38,11 @@ HW:
 
 В activity_login убрать LinearLayout
 Когда фокус в EditText password кнопка на клавиатуре(справа внизу) должна быть "done" при нажатии action как на кнопку login
+В activity_main убрать LinearLayout
+Придумать проекты и ПРИСЛАТЬ!!! в формате [ИМЯ] - [repository]: [Название]
+Сделать примеры с ListView и GridView + кастомные адаптеры(+кастом вью на доске)
+Сверстать экран меню в Google+, профиль вконтакте
+http://balsamiq.com/products/mockups/ - нарисовать экраны и переходы + попробавать сверстать
 
 
 
