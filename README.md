@@ -56,4 +56,5 @@ Repositories
 
 9. Anatoly Yablonski - https://github.com/Anatoleq/TaskManager
 
+10. Елена Станчиц - https://github.com/AlenaStan/Project
 
