@@ -77,3 +77,9 @@ Repositories
 
 14. Буйко Григорий - https://github.com/green2005/epam_training
 
+15. Макей Сергей - https://github.com/Varveron/Hello-word
+
+16. Валерий Каптановский - https://github.com/kptvlr/MyAndroid
+
+
+
