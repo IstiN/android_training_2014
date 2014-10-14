@@ -42,7 +42,15 @@ HW:
 Придумать проекты и ПРИСЛАТЬ!!! в формате [ИМЯ] - [repository]: [Название]
 Сделать примеры с ListView и GridView + кастомные адаптеры(+кастом вью на доске)
 Сверстать экран меню в Google+, профиль вконтакте
+
+https://www.dropbox.com/s/uc8ob0f3scnj8z4/device-2014-10-14-112537.png?dl=0
+
+https://www.dropbox.com/s/mg7onixgekteg7y/device-2014-10-14-112607.png?dl=0
+
+
 http://balsamiq.com/products/mockups/ - нарисовать экраны и переходы + попробавать сверстать
+
+
 
 
 
