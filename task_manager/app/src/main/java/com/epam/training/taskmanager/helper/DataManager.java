@@ -2,6 +2,8 @@ package com.epam.training.taskmanager.helper;
 
 import android.os.Handler;
 
+import com.epam.training.taskmanager.processing.Processor;
+import com.epam.training.taskmanager.source.ArrayStringDataSource;
 import com.epam.training.taskmanager.source.DataSource;
 
 import java.util.List;
@@ -11,13 +13,18 @@ import java.util.List;
  */
 public class DataManager {
 
-    public static interface Callback {
+    public static interface Callback<Result> {
         void onDataLoadStart();
-        void onDone(List<String> data);
+        void onDone(Result data);
         void onError(Exception e);
     }
 
-    public static void loadData(final Callback callback) {
+    public static <ProcessingResult, DataSourceResult, Params> void
+        loadData(
+            final Callback<ProcessingResult> callback,
+            final Params params,
+            final DataSource<DataSourceResult, Params> dataSource,
+            final Processor<ProcessingResult, DataSourceResult> processor) {
         if (callback == null) {
             throw new IllegalArgumentException("callback can't be null");
         }
@@ -27,11 +34,12 @@ public class DataManager {
             @Override
             public void run() {
                 try {
-                    final List<String> data = DataSource.getData();
+                    final DataSourceResult result = dataSource.getResult(params);
+                    final ProcessingResult processingResult = processor.process(result);
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            callback.onDone(data);
+                            callback.onDone(processingResult);
                         }
                     });
                 } catch (final Exception e) {
