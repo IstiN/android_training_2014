@@ -4,7 +4,7 @@
     <string name="app_name">Task Manager</string>
     <string name="title_login_activity">Login Screen</string>
     <string name="title_main_activity">Main Screen</string>
-    <string name="title_sample_activity">Sample Screen</string>
+    <string name="title_details_activity">Details Screen</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 

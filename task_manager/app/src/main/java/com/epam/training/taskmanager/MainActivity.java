@@ -1,6 +1,7 @@
 package com.epam.training.taskmanager;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.epam.training.taskmanager.bo.Note;
+import com.epam.training.taskmanager.bo.NoteGsonModel;
 import com.epam.training.taskmanager.helper.DataManager;
 import com.epam.training.taskmanager.processing.NoteArrayProcessor;
 import com.epam.training.taskmanager.source.HttpDataSource;
@@ -92,6 +94,16 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
 
             };
             listView.setAdapter(mAdapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                    Note item = (Note) mAdapter.getItem(position);
+                    NoteGsonModel note = new NoteGsonModel(item.getId(), item.getTitle(), item.getContent());
+                    intent.putExtra("item", note);
+                    startActivity(intent);
+                }
+            });
         } else {
             mData.clear();
             mData.addAll(data);

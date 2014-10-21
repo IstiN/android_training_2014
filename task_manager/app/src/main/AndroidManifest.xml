@@ -29,8 +29,8 @@
             />
 
         <activity
-            android:name=".SampleActivity"
-            android:label="@string/title_sample_activity"
+            android:name=".DetailsActivity"
+            android:label="@string/title_details_activity"
             android:parentActivityName=".MainActivity"
             />
 

@@ -2,31 +2,35 @@ package com.epam.training.taskmanager.bo;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by IstiN on 21.10.2014.
  */
-public class Note {
+public class Note extends JSONObjectWrapper {
 
-    private static final String TITLE = "t";
-    private static final String CONTENT = "c";
-    private static final String ID = "i";
+    private static final String TITLE = "title";
+    private static final String CONTENT = "content";
+    private static final String ID = "id";
 
-    private JSONObject mJO;
+    public Note(String jsonObject) {
+        super(jsonObject);
+    }
 
     public Note(JSONObject jsonObject) {
-        mJO = jsonObject;
+        super(jsonObject);
     }
 
     public String getTitle() {
-        return mJO.optString(TITLE);
+        return getString(TITLE);
     }
 
     public String getContent() {
-        return mJO.optString(CONTENT);
+        return getString(CONTENT);
     }
 
     public Long getId() {
-        return mJO.optLong(ID);
+        return getLong(ID);
     }
 
 }
