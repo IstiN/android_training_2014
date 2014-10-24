@@ -23,6 +23,10 @@ public class JSONObjectWrapper implements Parcelable {
         }
     }
 
+    protected JSONObjectWrapper(Parcel in) {
+        readFromParcel(in);
+    }
+
     public JSONObjectWrapper(JSONObject jsonObject) {
         mJO = jsonObject;
     }
@@ -61,7 +65,7 @@ public class JSONObjectWrapper implements Parcelable {
         try {
             mJO = new JSONObject(string);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("invalid parcel");
         }
     }
 }
