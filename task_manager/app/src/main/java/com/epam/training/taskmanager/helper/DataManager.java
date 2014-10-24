@@ -1,17 +1,11 @@
 package com.epam.training.taskmanager.helper;
 
-import android.os.AsyncTask;
+import com.epam.training.taskmanager.os.AsyncTask;
 import android.os.Handler;
 
 import com.epam.training.taskmanager.processing.Processor;
-import com.epam.training.taskmanager.source.ArrayStringDataSource;
 import com.epam.training.taskmanager.source.DataSource;
 
-import org.apache.http.util.ExceptionUtils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.Executors;
 
 /**
  * Created by IstiN on 15.10.2014.
