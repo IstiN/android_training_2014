@@ -35,7 +35,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
 
     protected abstract Result doInBackground(Params... params) throws Exception;
 
-    public void execute(final Params params) {
+    public void execute(final Params... params) {
         final Handler handler = new Handler();
         onPreExecute();
         sExecutor.execute(new Runnable() {
