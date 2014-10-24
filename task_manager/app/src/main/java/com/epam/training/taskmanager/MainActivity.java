@@ -2,8 +2,15 @@ package com.epam.training.taskmanager;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -26,9 +33,12 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements DataManager.Callback<List<Note>> {
 
     public static final String URL = "https://dl.dropboxusercontent.com/u/16403954/test.json";
+    public static final int LOADER_ID = 0;
     private ArrayAdapter mAdapter;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private Cursor mCursor;
 
     @Override
     protected void onCreate(Bundle pSavedInstanceState) {
@@ -51,6 +61,35 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
                 dataSource,
                 processor);
 
+        LoaderManager supportLoaderManager = getSupportLoaderManager();
+        supportLoaderManager.restartLoader(LOADER_ID,
+                new Bundle(),
+                new LoaderManager.LoaderCallbacks<Cursor>() {
+
+            @Override
+            public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
+                return new CursorLoader(MainActivity.this){
+
+                    @Override
+                    public Cursor loadInBackground() {
+                        MatrixCursor cursor = new MatrixCursor(new String[]{"id","name"});
+                        cursor.addRow(new Object[]{1l, "Vasya"});
+                        return cursor;
+                    }
+                };
+            }
+
+            @Override
+            public void onLoadFinished(Loader<Cursor> objectLoader, Cursor cursor) {
+                mCursor = cursor;
+            }
+
+            @Override
+            public void onLoaderReset(Loader<Cursor> objectLoader) {
+                mCursor = null;
+            }
+
+        });
     }
 
     @Override
