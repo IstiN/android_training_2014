@@ -33,7 +33,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
 
     }
 
-    protected abstract Result doInBackground(Params... params);
+    protected abstract Result doInBackground(Params... params) throws Exception;
 
     public void execute(final Params params) {
         final Handler handler = new Handler();
@@ -41,14 +41,25 @@ public abstract class AsyncTask<Params, Progress, Result> {
         sExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                final Result result = doInBackground(params);
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        onPostExecute(result);
-                    }
-                });
+                try {
+                    final Result result = doInBackground(params);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            onPostExecute(result);
+                        }
+                    });
+                } catch (final Exception e) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            onPostException(e);
+                        }
+                    });
+                }
             }
         });
     }
+
+    protected abstract void onPostException(Exception e);
 }

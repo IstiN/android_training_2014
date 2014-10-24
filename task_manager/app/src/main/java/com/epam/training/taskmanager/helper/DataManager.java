@@ -1,8 +1,8 @@
 package com.epam.training.taskmanager.helper;
 
-import com.epam.training.taskmanager.os.AsyncTask;
 import android.os.Handler;
 
+import com.epam.training.taskmanager.os.AsyncTask;
 import com.epam.training.taskmanager.processing.Processor;
 import com.epam.training.taskmanager.source.DataSource;
 
@@ -39,8 +39,6 @@ public class DataManager {
     private static <ProcessingResult, DataSourceResult, Params> void executeInAsyncTask(final Callback<ProcessingResult> callback, Params params, final DataSource<DataSourceResult, Params> dataSource) {
         new AsyncTask<Params, Void, ProcessingResult>() {
 
-            private Exception mE;
-
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -50,21 +48,17 @@ public class DataManager {
             @Override
             protected void onPostExecute(ProcessingResult processingResult) {
                 super.onPostExecute(processingResult);
-                if (mE != null) {
-                    callback.onError(mE);
-                } else {
-                    callback.onDone(processingResult);
-                }
+                callback.onDone(processingResult);
             }
 
             @Override
-            protected ProcessingResult doInBackground(Params... params) {
-                try {
-                    return (ProcessingResult) dataSource.getResult((Params) params);
-                } catch (Exception e) {
-                    mE = e;
-                    return null;
-                }
+            protected ProcessingResult doInBackground(Params... params) throws Exception {
+                return (ProcessingResult) dataSource.getResult((Params) params);
+            }
+
+            @Override
+            protected void onPostException(Exception e) {
+                callback.onError(e);
             }
 
         }.execute(params);
