@@ -23,6 +23,9 @@
             android:name=".LoginActivity"
             android:label="@string/title_login_activity"/>
         <activity
+            android:name=".VkLoginActivity"
+            android:label="@string/title_vk_login_activity"/>
+        <activity
             android:name=".MainActivity"
             android:label="@string/title_main_activity"
             android:launchMode="singleTask"
