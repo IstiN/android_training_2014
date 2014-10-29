@@ -16,12 +16,14 @@ public class DataManager {
 
     public static interface Callback<Result> {
         void onDataLoadStart();
+
         void onDone(Result data);
+
         void onError(Exception e);
     }
 
     public static <ProcessingResult, DataSourceResult, Params> void
-        loadData(
+    loadData(
             final Callback<ProcessingResult> callback,
             final Params params,
             final DataSource<DataSourceResult, Params> dataSource,
@@ -30,13 +32,13 @@ public class DataManager {
             throw new IllegalArgumentException("callback can't be null");
         }
         if (IS_ASYNC_TASK) {
-            executeInAsyncTask(callback, params, dataSource);
+            executeInAsyncTask(callback, params, dataSource, processor);
         } else {
             executeInThread(callback, params, dataSource, processor);
         }
     }
 
-    private static <ProcessingResult, DataSourceResult, Params> void executeInAsyncTask(final Callback<ProcessingResult> callback, Params params, final DataSource<DataSourceResult, Params> dataSource) {
+    private static <ProcessingResult, DataSourceResult, Params> void executeInAsyncTask(final Callback<ProcessingResult> callback, Params params, final DataSource<DataSourceResult, Params> dataSource, final Processor<ProcessingResult, DataSourceResult> processor) {
         new AsyncTask<Params, Void, ProcessingResult>() {
 
             @Override
@@ -53,7 +55,8 @@ public class DataManager {
 
             @Override
             protected ProcessingResult doInBackground(Params... params) throws Exception {
-                return (ProcessingResult) dataSource.getResult((Params) params);
+                DataSourceResult dataSourceResult = dataSource.getResult(params[0]);
+                return processor.process(dataSourceResult);
             }
 
             @Override
