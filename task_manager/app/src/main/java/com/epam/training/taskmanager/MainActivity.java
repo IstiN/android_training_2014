@@ -13,6 +13,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -126,7 +127,9 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
                     TextView textView1 = (TextView) convertView.findViewById(android.R.id.text1);
                     textView1.setText(item.getTitle());
                     TextView textView2 = (TextView) convertView.findViewById(android.R.id.text2);
-                    textView2.setText(item.getContent());
+                    //TODO convert to Spanned in the background thread
+                    CharSequence text = Html.fromHtml(item.getContent() + " <b>bold</b>");
+                    textView2.setText(text, TextView.BufferType.SPANNABLE);
                     convertView.setTag(item.getId());
                     return convertView;
                 }

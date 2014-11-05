@@ -26,6 +26,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <Button
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:onClick="onLoginClick"/>
+
     <Button
         android:id="@+id/cancel_btn"
         android:layout_toLeftOf="@id/login_btn"
@@ -48,11 +50,18 @@
     <LinearLayout
         android:layout_below="@id/cancel_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onVkAuthClick"
             android:text="VK"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encr/Decr"
+            android:onClick="onEncrDecrClick"/>
     </LinearLayout>
 </RelativeLayout>
