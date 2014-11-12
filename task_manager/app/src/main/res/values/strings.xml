@@ -4,6 +4,7 @@
     <string name="app_name">Task Manager</string>
     <string name="title_login_activity">Login Screen</string>
     <string name="title_vk_login_activity">Vk Login Screen</string>
+    <string name="title_fragment_activity">Fragments Screen</string>
     <string name="title_main_activity">Main Screen</string>
     <string name="title_details_activity">Details Screen</string>
     <string name="hello_world">Hello world!</string>

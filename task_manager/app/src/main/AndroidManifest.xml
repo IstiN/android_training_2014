@@ -26,6 +26,12 @@
             android:name=".VkLoginActivity"
             android:label="@string/title_vk_login_activity"/>
         <activity
+            android:name=".FragmentLayoutSupportActivity"
+            android:label="@string/title_fragment_activity"/>
+        <activity
+            android:name=".DetailsFragmentActivity"
+            android:label="@string/title_fragment_activity"/>
+        <activity
             android:name=".MainActivity"
             android:label="@string/title_main_activity"
             android:launchMode="singleTask"

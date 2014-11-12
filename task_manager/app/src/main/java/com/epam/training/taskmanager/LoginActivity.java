@@ -33,6 +33,10 @@ public class LoginActivity extends ActionBarActivity {
         setLoginSuccess();
     }
 
+    public void onFragmentsClick(View view) {
+        startActivity(new Intent(this, FragmentLayoutSupportActivity.class));
+    }
+
     private void setLoginSuccess() {
         AuthUtils.setLogged(true);
         setResult(RESULT_OK);

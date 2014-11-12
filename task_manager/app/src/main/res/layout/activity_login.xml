@@ -63,5 +63,11 @@
             android:layout_height="wrap_content"
             android:text="Encr/Decr"
             android:onClick="onEncrDecrClick"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fragments"
+            android:onClick="onFragmentsClick"/>
     </LinearLayout>
 </RelativeLayout>
