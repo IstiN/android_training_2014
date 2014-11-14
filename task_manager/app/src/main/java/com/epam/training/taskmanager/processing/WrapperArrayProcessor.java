@@ -1,7 +1,6 @@
 package com.epam.training.taskmanager.processing;
 
 import com.epam.training.taskmanager.bo.JSONObjectWrapper;
-import com.epam.training.taskmanager.bo.Note;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

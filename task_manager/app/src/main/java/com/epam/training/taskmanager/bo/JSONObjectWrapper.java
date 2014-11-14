@@ -35,8 +35,20 @@ public class JSONObjectWrapper implements Parcelable {
         return mJO.optString(key);
     }
 
+    protected Boolean getBoolean(String key) {
+        return mJO.optBoolean(key);
+    }
+
     protected Long getLong(String id) {
         return mJO.optLong(id);
+    }
+
+    protected void set(String key, String value) {
+        try {
+            mJO.put(key, value);
+        } catch (JSONException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     @Override

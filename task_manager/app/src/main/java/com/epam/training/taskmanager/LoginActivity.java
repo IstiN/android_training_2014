@@ -30,17 +30,11 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     public void onLoginClick(View view) {
-        setLoginSuccess();
+        Toast.makeText(this, "implement me", Toast.LENGTH_SHORT).show();
     }
 
     public void onFragmentsClick(View view) {
         startActivity(new Intent(this, FragmentLayoutSupportActivity.class));
-    }
-
-    private void setLoginSuccess() {
-        AuthUtils.setLogged(true);
-        setResult(RESULT_OK);
-        finish();
     }
 
     private String mSomeSecureString;
@@ -75,7 +69,8 @@ public class LoginActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_VK && resultCode == RESULT_OK)  {
-            setLoginSuccess();
+            setResult(RESULT_OK);
+            finish();
         }
     }
 }

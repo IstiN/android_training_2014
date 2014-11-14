@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
-import com.epam.training.taskmanager.bo.Note;
 import com.epam.training.taskmanager.bo.NoteGsonModel;
 
 

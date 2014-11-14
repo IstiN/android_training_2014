@@ -1,5 +1,7 @@
 package com.epam.training.taskmanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,10 +13,12 @@ import android.webkit.WebViewClient;
 import com.epam.training.taskmanager.auth.VkOAuthHelper;
 
 
-public class VkLoginActivity extends ActionBarActivity {
+public class VkLoginActivity extends ActionBarActivity implements VkOAuthHelper.Callbacks {
 
     private static final String TAG = VkLoginActivity.class.getSimpleName();
+
     private WebView mWebView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,28 @@ public class VkLoginActivity extends ActionBarActivity {
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         mWebView.setWebViewClient(new VkWebViewClient());
         mWebView.loadUrl(VkOAuthHelper.AUTORIZATION_URL);
+    }
+
+    @Override
+    public void onError(Exception e) {
+        new AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage(e.getMessage())
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        setResult(RESULT_CANCELED);
+                        finish();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    @Override
+    public void onSuccess() {
+        setResult(RESULT_OK);
+        finish();
     }
 
     private class VkWebViewClient extends WebViewClient {
@@ -49,12 +75,9 @@ public class VkLoginActivity extends ActionBarActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Log.d(TAG, "overr " + url);
-            if (VkOAuthHelper.proceedRedirectURL(VkLoginActivity.this, url)) {
+            if (VkOAuthHelper.proceedRedirectURL(VkLoginActivity.this, url, VkLoginActivity.this)) {
                 Log.d(TAG, "overr redr");
                 view.setVisibility(View.INVISIBLE);
-                Log.d(TAG, "Parsing url" + url);
-                setResult(RESULT_OK);
-                finish();
                 return true;
             } else {
                 //view.loadUrl(url);

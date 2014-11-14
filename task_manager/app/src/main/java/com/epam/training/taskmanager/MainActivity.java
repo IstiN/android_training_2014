@@ -2,95 +2,78 @@ package com.epam.training.taskmanager;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.MatrixCursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.epam.training.taskmanager.bo.Note;
+import com.epam.training.taskmanager.bo.Friend;
 import com.epam.training.taskmanager.bo.NoteGsonModel;
 import com.epam.training.taskmanager.helper.DataManager;
-import com.epam.training.taskmanager.processing.NoteArrayProcessor;
+import com.epam.training.taskmanager.processing.BitmapProcessor;
+import com.epam.training.taskmanager.processing.FriendArrayProcessor;
 import com.epam.training.taskmanager.source.HttpDataSource;
+import com.epam.training.taskmanager.source.VkDataSource;
 
-import org.json.JSONObject;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity implements DataManager.Callback<List<Note>> {
+public class MainActivity extends ActionBarActivity implements DataManager.Callback<List<Friend>> {
 
-    public static final String URL = "https://dl.dropboxusercontent.com/u/16403954/test.json";
     public static final int LOADER_ID = 0;
+
     private ArrayAdapter mAdapter;
 
-    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private FriendArrayProcessor mFriendArrayProcessor = new FriendArrayProcessor();
 
-    private Cursor mCursor;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle pSavedInstanceState) {
         super.onCreate(pSavedInstanceState);
         setContentView(R.layout.activity_main);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-        final HttpDataSource dataSource = HttpDataSource.get(MainActivity.this);
-        final NoteArrayProcessor processor = new NoteArrayProcessor();
+        final HttpDataSource dataSource = getHttpDataSource();
+        final FriendArrayProcessor processor = getProcessor();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                DataManager.loadData(MainActivity.this,
-                        URL,
-                        dataSource,
-                        processor);
+                update(dataSource, processor);
             }
         });
+        update(dataSource, processor);
+    }
+
+    private FriendArrayProcessor getProcessor() {
+        return mFriendArrayProcessor;
+    }
+
+    private HttpDataSource getHttpDataSource() {
+        return VkDataSource.get(MainActivity.this);
+    }
+
+    private void update(HttpDataSource dataSource, FriendArrayProcessor processor) {
         DataManager.loadData(MainActivity.this,
-                URL,
+                getUrl(),
                 dataSource,
                 processor);
+    }
 
-        LoaderManager supportLoaderManager = getSupportLoaderManager();
-        supportLoaderManager.restartLoader(LOADER_ID,
-                new Bundle(),
-                new LoaderManager.LoaderCallbacks<Cursor>() {
-
-            @Override
-            public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
-                return new CursorLoader(MainActivity.this){
-
-                    @Override
-                    public Cursor loadInBackground() {
-                        MatrixCursor cursor = new MatrixCursor(new String[]{"id","name"});
-                        cursor.addRow(new Object[]{1l, "Vasya"});
-                        return cursor;
-                    }
-                };
-            }
-
-            @Override
-            public void onLoadFinished(Loader<Cursor> objectLoader, Cursor cursor) {
-                mCursor = cursor;
-            }
-
-            @Override
-            public void onLoaderReset(Loader<Cursor> objectLoader) {
-                mCursor = null;
-            }
-
-        });
+    private String getUrl() {
+        return Api.FRIENDS_GET;
     }
 
     @Override
@@ -101,11 +84,11 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
         findViewById(android.R.id.empty).setVisibility(View.GONE);
     }
 
-    private List<Note> mData;
+    private List<Friend> mData;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
-    public void onDone(List<Note> data) {
+    public void onDone(List<Friend> data) {
         if (mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
         }
@@ -116,21 +99,47 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
         AdapterView listView = (AbsListView) findViewById(android.R.id.list);
         if (mAdapter == null) {
             mData = data;
-            mAdapter = new ArrayAdapter<Note>(this, R.layout.adapter_item, android.R.id.text1, data) {
+            mAdapter = new ArrayAdapter<Friend>(this, R.layout.adapter_item, android.R.id.text1, data) {
 
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     if (convertView == null) {
                         convertView = View.inflate(MainActivity.this, R.layout.adapter_item, null);
                     }
-                    Note item = getItem(position);
+                    Friend item = getItem(position);
                     TextView textView1 = (TextView) convertView.findViewById(android.R.id.text1);
-                    textView1.setText(item.getTitle());
+                    textView1.setText(item.getName());
                     TextView textView2 = (TextView) convertView.findViewById(android.R.id.text2);
-                    //TODO convert to Spanned in the background thread
-                    CharSequence text = Html.fromHtml(item.getContent() + " <b>bold</b>");
-                    textView2.setText(text, TextView.BufferType.SPANNABLE);
+                    textView2.setText(item.getNickname());
                     convertView.setTag(item.getId());
+                    final ImageView imageView = (ImageView) convertView.findViewById(android.R.id.icon);
+                    final String url = item.getPhoto();
+                    imageView.setImageBitmap(null);
+                    imageView.setTag(url);
+                    if (!TextUtils.isEmpty(url)) {
+                        //TODO add delay and cancel old request or create limited queue
+                        //TODO create sync Map to check existing request and existing callbacks
+                        //TODO create separate thread pool for manager
+                        DataManager.loadData(new DataManager.Callback<Bitmap>() {
+                            @Override
+                            public void onDataLoadStart() {
+
+                            }
+
+                            @Override
+                            public void onDone(Bitmap bitmap) {
+                                if (url.equals(imageView.getTag())) {
+                                    imageView.setImageBitmap(bitmap);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+
+                            }
+
+                        }, url, HttpDataSource.get(MainActivity.this), new BitmapProcessor());
+                    }
                     return convertView;
                 }
 
@@ -140,8 +149,8 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                    Note item = (Note) mAdapter.getItem(position);
-                    NoteGsonModel note = new NoteGsonModel(item.getId(), item.getTitle(), item.getContent());
+                    Friend item = (Friend) mAdapter.getItem(position);
+                    NoteGsonModel note = new NoteGsonModel(item.getId(), item.getFirstName(), item.getLastName());
                     intent.putExtra("item", note);
                     startActivity(intent);
                 }
