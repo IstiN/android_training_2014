@@ -22,6 +22,7 @@ import com.epam.training.taskmanager.bo.NoteGsonModel;
 import com.epam.training.taskmanager.helper.DataManager;
 import com.epam.training.taskmanager.processing.BitmapProcessor;
 import com.epam.training.taskmanager.processing.FriendArrayProcessor;
+import com.epam.training.taskmanager.source.CachedHttpDataSource;
 import com.epam.training.taskmanager.source.HttpDataSource;
 import com.epam.training.taskmanager.source.VkDataSource;
 
@@ -138,7 +139,7 @@ public class MainActivity extends ActionBarActivity implements DataManager.Callb
 
                             }
 
-                        }, url, HttpDataSource.get(MainActivity.this), new BitmapProcessor());
+                        }, url, CachedHttpDataSource.get(MainActivity.this), new BitmapProcessor());
                     }
                     return convertView;
                 }

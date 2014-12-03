@@ -50,6 +50,8 @@ public class TitlesFragment extends ListFragment {
 
     int mCurCheckPosition = 0;
 
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

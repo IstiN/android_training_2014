@@ -25,7 +25,8 @@ public class HttpDataSource implements DataSource<InputStream, String> {
         //download data and return
         URL url = new URL(p);
         // Read all the text returned by the server
-        return url.openStream();
+        InputStream inputStream = url.openStream();
+        return inputStream;
     }
 
     public static void close(Closeable in) {
