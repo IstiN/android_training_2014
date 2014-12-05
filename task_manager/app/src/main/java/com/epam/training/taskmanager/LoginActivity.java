@@ -40,6 +40,10 @@ public class LoginActivity extends ActionBarActivity {
         ConcurrencySampleHelper.success();
     }
 
+    public void onConcurrencySuccess2Click(View view) {
+        ConcurrencySampleHelper.success2();
+    }
+
     public void onLoginClick(View view) {
         Toast.makeText(this, "implement me", Toast.LENGTH_SHORT).show();
     }

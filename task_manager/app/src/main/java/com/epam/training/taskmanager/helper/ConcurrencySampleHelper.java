@@ -18,6 +18,12 @@ public class ConcurrencySampleHelper {
         concurrencyThreadTest(array);
     }
 
+    public static void success2() {
+        final List<String> array = new ArrayList<String>();
+        generateTestValues(array);
+        concurrencyThreadTestWithLock(array);
+    }
+
     public static void fail() {
         final List<String> array = new ArrayList<String>();
         generateTestValues(array);
@@ -53,6 +59,39 @@ public class ConcurrencySampleHelper {
                     e.printStackTrace();
                 }
                 generateNewValue(array);
+                Log.d("concurrent", "new value array size " + array.size());
+            }
+        }).start();
+    }
+
+    private static void concurrencyThreadTestWithLock(final List<String> array) {
+        final Object lock = new Object();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (lock) {
+                    for (String value : array) {
+                        try {
+                            Log.d("concurrent", "foreach array size " + array.size());
+                            Thread.currentThread().sleep(700l);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.currentThread().sleep(500l);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                synchronized (lock) {
+                    generateNewValue(array);
+                }
                 Log.d("concurrent", "new value array size " + array.size());
             }
         }).start();

@@ -73,12 +73,17 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Concurency Fail"
+            android:text="Concurrency Fail"
             android:onClick="onConcurrencyFailClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Concurency Success"
+            android:text="Concurrency Success"
             android:onClick="onConcurrencySuccessClick"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concurrency Success2"
+            android:onClick="onConcurrencySuccess2Click"/>
     </LinearLayout>
 </RelativeLayout>
