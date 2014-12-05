@@ -8,6 +8,11 @@
 https://dl.dropboxusercontent.com/u/16403954/IMG_20141127_210749.jpg
 https://dl.dropboxusercontent.com/u/16403954/IMG_20141127_210812.jpg
 
+Cache for ImageLoader
+
+
+https://dl.dropboxusercontent.com/u/16403954/IMG_20141203_192759.jpg
+
 WIKI
 =====================
 
