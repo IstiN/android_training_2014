@@ -51,7 +51,7 @@
         android:layout_below="@id/cancel_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,5 +69,16 @@
             android:layout_height="wrap_content"
             android:text="Fragments"
             android:onClick="onFragmentsClick"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concurency Fail"
+            android:onClick="onConcurrencyFailClick"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concurency Success"
+            android:onClick="onConcurrencySuccessClick"/>
     </LinearLayout>
 </RelativeLayout>

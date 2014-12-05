@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.epam.training.taskmanager.auth.secure.EncrManager;
+import com.epam.training.taskmanager.helper.ConcurrencySampleHelper;
 import com.epam.training.taskmanager.utils.AuthUtils;
+
+import java.util.concurrent.ConcurrentMap;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -27,6 +30,14 @@ public class LoginActivity extends ActionBarActivity {
                 finish();
             }
         });
+    }
+
+    public void onConcurrencyFailClick(View view) {
+        ConcurrencySampleHelper.fail();
+    }
+
+    public void onConcurrencySuccessClick(View view) {
+        ConcurrencySampleHelper.success();
     }
 
     public void onLoginClick(View view) {
