@@ -22,20 +22,42 @@ public class DataManager {
         void onError(Exception e);
     }
 
+    public static interface MySuperLoader<ProcessingResult, DataSourceResult, Params> {
+
+        void load(final Callback<ProcessingResult> callback, Params params, final DataSource<DataSourceResult, Params> dataSource, final Processor<ProcessingResult, DataSourceResult> processor);
+
+    }
+
     public static <ProcessingResult, DataSourceResult, Params> void
     loadData(
             final Callback<ProcessingResult> callback,
             final Params params,
             final DataSource<DataSourceResult, Params> dataSource,
-            final Processor<ProcessingResult, DataSourceResult> processor) {
+            final Processor<ProcessingResult, DataSourceResult> processor
+            ) {
+        loadData(callback, params, dataSource, processor, new MySuperLoader<ProcessingResult, DataSourceResult, Params>() {
+            @Override
+            public void load(Callback<ProcessingResult> callback, Params params, DataSource<DataSourceResult, Params> dataSource, Processor<ProcessingResult, DataSourceResult> processor) {
+                if (IS_ASYNC_TASK) {
+                    executeInAsyncTask(callback, params, dataSource, processor);
+                } else {
+                    executeInThread(callback, params, dataSource, processor);
+                }
+            }
+        });
+    }
+
+    public static <ProcessingResult, DataSourceResult, Params> void
+    loadData(
+            final Callback<ProcessingResult> callback,
+            final Params params,
+            final DataSource<DataSourceResult, Params> dataSource,
+            final Processor<ProcessingResult, DataSourceResult> processor,
+            final MySuperLoader<ProcessingResult, DataSourceResult, Params> mySuperLoader) {
         if (callback == null) {
             throw new IllegalArgumentException("callback can't be null");
         }
-        if (IS_ASYNC_TASK) {
-            executeInAsyncTask(callback, params, dataSource, processor);
-        } else {
-            executeInThread(callback, params, dataSource, processor);
-        }
+        mySuperLoader.load(callback, params, dataSource, processor);
     }
 
     private static <ProcessingResult, DataSourceResult, Params> void executeInAsyncTask(final Callback<ProcessingResult> callback, Params params, final DataSource<DataSourceResult, Params> dataSource, final Processor<ProcessingResult, DataSourceResult> processor) {

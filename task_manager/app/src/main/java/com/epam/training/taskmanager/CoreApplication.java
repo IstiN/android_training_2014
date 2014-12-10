@@ -3,6 +3,7 @@ package com.epam.training.taskmanager;
 import android.app.Application;
 import android.content.Context;
 
+import com.epam.training.image.MySuperImageLoader;
 import com.epam.training.taskmanager.source.CachedHttpDataSource;
 import com.epam.training.taskmanager.source.HttpDataSource;
 import com.epam.training.taskmanager.source.VkDataSource;
@@ -15,10 +16,12 @@ public class CoreApplication extends Application {
     private HttpDataSource mHttpDataSource;
     private CachedHttpDataSource mCachedHttpDataSource;
     private VkDataSource mVkDataSource;
+    private MySuperImageLoader mMySuperImageLoader;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mMySuperImageLoader = new MySuperImageLoader(this);
         mHttpDataSource = new HttpDataSource();
         mVkDataSource = new VkDataSource();
         mCachedHttpDataSource = new CachedHttpDataSource(this);
@@ -46,6 +49,13 @@ public class CoreApplication extends Application {
                 mVkDataSource = new VkDataSource();
             }
             return mVkDataSource;
+        }
+        if (MySuperImageLoader.KEY.equals(name)) {
+            //for android kitkat +
+            if (mMySuperImageLoader == null) {
+                mMySuperImageLoader = new MySuperImageLoader(this);
+            }
+            return mMySuperImageLoader;
         }
         return super.getSystemService(name);
     }
