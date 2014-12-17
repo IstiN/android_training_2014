@@ -15,6 +15,7 @@ import com.epam.training.taskmanager.processing.BitmapProcessor;
 import com.epam.training.taskmanager.processing.Processor;
 import com.epam.training.taskmanager.source.CachedHttpDataSource;
 import com.epam.training.taskmanager.source.DataSource;
+import com.epam.training.taskmanager.source.HttpDataSource;
 
 import java.io.InputStream;
 import java.util.HashSet;
@@ -120,7 +121,7 @@ public class MySuperImageLoader {
     }
 
     public MySuperImageLoader(Context context) {
-        this(context, CachedHttpDataSource.get(context), new BitmapProcessor());
+        this(context, HttpDataSource.get(context), new BitmapProcessor());
     }
 
     public void pause() {
