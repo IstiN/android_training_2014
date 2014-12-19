@@ -22,6 +22,10 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_login_activity"/>
+        <service
+            android:name=".service.MyCoolService"
+            android:exported="true"
+            />
         <activity
             android:name=".VkLoginActivity"
             android:label="@string/title_vk_login_activity"/>

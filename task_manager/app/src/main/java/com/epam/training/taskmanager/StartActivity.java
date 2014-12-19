@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
+import com.epam.training.taskmanager.service.ServiceResult;
 import com.epam.training.taskmanager.utils.AuthUtils;
 
 
@@ -14,6 +15,8 @@ public class StartActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //ServiceResult.executeWithResultReceiver(this);
+        ServiceResult.executeWithServiceConnection(this);
         if (AuthUtils.isLogged()) {
             startMainActivity();
         } else {
