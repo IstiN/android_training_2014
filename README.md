@@ -2,6 +2,21 @@
 
 Будем ревьювать с начала тренинга. Код в git!!!
 
+NOTES
+=====
+
+http://www.materialpalette.com/ - цветовая гамма
+http://shreyasachar.com/AndroidAssetStudio/ - иконки
+
+````
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/material_orange_500</item>
+        <item name="colorPrimaryDark">@color/material_orange_700</item>
+        <item name="colorAccent">@color/material_orange_A200</item>
+    </style>
+
+````
+
 WIKI
 =====================
 
