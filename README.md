@@ -6,6 +6,7 @@ NOTES
 =====
 
 http://www.materialpalette.com/ - цветовая гамма
+
 http://shreyasachar.com/AndroidAssetStudio/ - иконки
 
 ````
