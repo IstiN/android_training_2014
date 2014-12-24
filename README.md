@@ -5,6 +5,9 @@
 NOTES
 =====
 
+https://www.dropbox.com/s/dm4g4krmqzpixw2/training.zip?dl=0 - проревьюваны проекты. Смотрим TODOs
+
+
 http://www.materialpalette.com/ - цветовая гамма
 
 http://shreyasachar.com/AndroidAssetStudio/ - иконки
