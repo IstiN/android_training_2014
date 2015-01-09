@@ -1,9 +1,11 @@
-Будет тренинг в пятницу(9.01.2015) в 18.30 - приносите проекты!!! и вопросы. 
+Будет тренинг в среду(14.01.2015) в 18.30 - где все???!!! и вопросы. 
 
 Будем ревьювать код. Код в git!!!
 
 NOTES
 =====
+
+https://developer.android.com/intl/ru/training/material/lists-cards.html 
 
 https://www.dropbox.com/s/dm4g4krmqzpixw2/training.zip?dl=0 - проревьюваны проекты. Смотрим TODOs
 
