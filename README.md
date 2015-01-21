@@ -10,8 +10,8 @@
 если будут 3 нарушения я ПРЕКРАЩАЮ РЕВЬЮВАТЬ и двигаюсь дальше =) :
 
 CheckList
-*[ ] check members name(m* or without m)
-*[ ] check accessors (public, private, protected, default, static)
+* [ ] check members name(m* or without m)
+* [ ] check accessors (public, private, protected, default, static)
 [ ] check { } in if, for, etc...
 [ ] fragment creation need to be with parameters in Bundle, and set like setArguments
 [ ] check use this.* or do not use this.* when get access to the members
