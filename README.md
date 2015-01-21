@@ -1,10 +1,8 @@
-РАСПИСАНИЕ
+# РАСПИСАНИЕ
 
--понедельник 26.01 - 18.30 (Место проведения тренинга 3ый этаж!!!). 
-
--пятница 30.01 - 18.30 (Место проведения тренинга 3ый этаж!!!). 
-
--понедельник 02.02 - ЗАЩИТА - (Скорее всего 1 этаж!!!)
+* понедельник 26.01 - 18.30 (Место проведения тренинга 3ый этаж!!!). 
+* пятница 30.01 - 18.30 (Место проведения тренинга 3ый этаж!!!). 
+* понедельник 02.02 - ЗАЩИТА - (Скорее всего 1 этаж!!!)
 
 На каждое следующее занятие Вы ДОЛЖНЫ проверить свой по следующим пунктам, 
 если будут 3 нарушения я ПРЕКРАЩАЮ РЕВЬЮВАТЬ и двигаюсь дальше =) :
@@ -12,16 +10,16 @@
 CheckList
 * [ ] check members name(m* or without m)
 * [ ] check accessors (public, private, protected, default, static)
-[ ] check { } in if, for, etc...
-[ ] fragment creation need to be with parameters in Bundle, and set like setArguments
-[ ] check use this.* or do not use this.* when get access to the members
-[ ] use @Override if extends some method of class or interface 
-[ ] text_tag - do not use "_" in variable, members, packages
-[ ] textTag - incorrect package name(do not use UPPERCASE)
-[ ] hardcoded strings need to be in Resources
-[ ] check getActivity for NULL if use in fragment except onActivityCreated and onCreateView
-[ ] check all __________ underlined by Android Studio code
-[ ] move extras keys to constants
+* [ ] check { } in if, for, etc...
+* [ ] fragment creation need to be with parameters in Bundle, and set like setArguments
+* [ ] check use this.* or do not use this.* when get access to the members
+* [ ] use @Override if extends some method of class or interface 
+* [ ] text_tag - do not use "_" in variable, members, packages
+* [ ] textTag - incorrect package name(do not use UPPERCASE)
+* [ ] hardcoded strings need to be in Resources
+* [ ] check getActivity for NULL if use in fragment except onActivityCreated and onCreateView
+* [ ] check all __________ underlined by Android Studio code
+* [ ] move extras keys to constants
 
 NOTES
 =====
