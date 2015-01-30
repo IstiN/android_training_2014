@@ -8,7 +8,7 @@
 если будут 3 нарушения я ПРЕКРАЩАЮ РЕВЬЮВАТЬ и двигаюсь дальше =) :
 
 CheckList
-* [ ] check members name(m* or without m)
+* [ ] check members name(m* or without m), use s* when static
 * [ ] check accessors (public, private, protected, default, static)
 * [ ] check { } in if, for, etc...
 * [ ] fragment creation need to be with parameters in Bundle, and set like setArguments
