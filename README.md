@@ -1,5 +1,5 @@
 //Really cool feature
-
+//I've fixed this bug!!!
 
 CheckList
 * [ ] check members name(m* or without m), use s* when static
