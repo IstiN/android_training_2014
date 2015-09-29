@@ -1,3 +1,5 @@
+//Really cool feature
+
 
 CheckList
 * [ ] check members name(m* or without m), use s* when static
@@ -5,7 +7,7 @@ CheckList
 * [ ] check { } in if, for, etc...
 * [ ] fragment creation need to be with parameters in Bundle, and set like setArguments
 * [ ] check use this.* or do not use this.* when get access to the members
-* [ ] use @Override if extends some method of class or interface 
+* [ ] use @Override if extends some method of class or interface
 * [ ] text_tag - do not use "_" in variable, members, packages
 * [ ] textTag - incorrect package name(do not use UPPERCASE)
 * [ ] hardcoded strings need to be in Resources
@@ -16,7 +18,7 @@ CheckList
 NOTES
 =====
 
-https://developer.android.com/intl/ru/training/material/lists-cards.html 
+https://developer.android.com/intl/ru/training/material/lists-cards.html
 
 https://www.dropbox.com/s/dm4g4krmqzpixw2/training.zip?dl=0 - проревьюваны проекты. Смотрим TODOs
 
@@ -51,4 +53,3 @@ Cache for ImageLoader
 
 
 https://dl.dropboxusercontent.com/u/16403954/IMG_20141203_192759.jpg
-
